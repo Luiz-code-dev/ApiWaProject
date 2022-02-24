@@ -1,17 +1,31 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.dto;
 
-public class LaboratorioDTO {
+import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Status;
 
-	
+public class AtualizacaoLabDTO {
+
+
 	private String nome;
-	
+
 	private String endereco;
+
+	private Status status;
 	
 	
-	public LaboratorioDTO(String nome, String endereco) {
+
+	public AtualizacaoLabDTO(String nome, String endereco, Status status) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;
+		this.status = status;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public String getNome() {
@@ -29,4 +43,5 @@ public class LaboratorioDTO {
 	public void setEndereço(String endereco) {
 		this.endereco = endereco;
 	}
+
 }

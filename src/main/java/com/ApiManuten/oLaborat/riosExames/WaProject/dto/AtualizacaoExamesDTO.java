@@ -1,14 +1,16 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.dto;
 
-public class LaboratorioDTO {
+public class AtualizacaoExamesDTO {
 
-	
+
 	private String nome;
-	
+
 	private String endereco;
 	
 	
-	public LaboratorioDTO(String nome, String endereco) {
+	
+
+	public AtualizacaoExamesDTO(String nome, String endereco) {
 		super();
 		this.nome = nome;
 		this.endereco = endereco;

@@ -1,58 +1,71 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tb_laboratorios")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Laboratorio {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long idLaboratorio;
+	
+	private String nome;
+	
+	private String endereco;
+	
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
+	@ManyToMany(mappedBy = "listaLaboratorios")
+	@JsonManagedReference
+	private List<Exames> listaExames;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
-    private String endereco;
-    private Boolean status;
+	public Long getIdLaboratorio() {
+		return idLaboratorio;
+	}
 
-    public Laboratorio() {
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public Laboratorio(Long id, String nome, String endereco, Boolean status) {
-        this.id = id;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.status = status;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public String getEndereco() {
+		return endereco;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
-    public String getNome() {
-        return nome;
-    }
+	public Status getStatus() {
+		return status;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
-    public String getEndereco() {
-        return endereco;
-    }
+	public List<Exames> getListaExames() {
+		return listaExames;
+	}
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+	public void setListaExames(List<Exames> listaExames) {
+		this.listaExames = listaExames;
+	}
 
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
+	@Override
+	public String toString() {
+		return "Laboratorio [idLaboratorio=" + idLaboratorio + ", nome=" + nome + ", endereco=" + endereco + ", status="
+				+ status + "]";
+	}
 }
