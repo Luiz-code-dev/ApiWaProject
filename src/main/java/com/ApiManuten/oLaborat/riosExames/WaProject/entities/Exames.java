@@ -26,12 +26,18 @@ public class Exames {
 	private TiposExames tipo;
 	@Enumerated(EnumType.STRING)
 	private Status status;
+	
 	@ManyToMany
 	@JoinTable(name = "laboratorio_exame", joinColumns = {
 			@JoinColumn(name = "idExame", referencedColumnName = "idExame") }, inverseJoinColumns = {
 					@JoinColumn(name = "idLaboratorio", referencedColumnName = "idLaboratorio") })
 	@JsonBackReference
 	private List<Laboratorio> listaLaboratorios;
+	
+	public Exames() {
+		
+	}
+	
 
 	public String getNome() {
 		return nome;

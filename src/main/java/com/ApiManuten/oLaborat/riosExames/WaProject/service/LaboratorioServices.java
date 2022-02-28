@@ -2,6 +2,8 @@ package com.ApiManuten.oLaborat.riosExames.WaProject.service;
 
 import java.util.List;
 
+
+
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.AtualizacaoLabDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.LaboratorioDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Laboratorio;

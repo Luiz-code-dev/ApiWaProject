@@ -1,8 +1,14 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.dto;
 
+import java.io.Serializable;
+
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.TiposExames;
 
-public class ExamesDTO {
+public class ExamesDTO implements Serializable{
+
+
+	private static final long serialVersionUID = 1L;
+
 	
 	
 	private String nome;

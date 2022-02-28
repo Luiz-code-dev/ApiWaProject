@@ -2,11 +2,14 @@ package com.ApiManuten.oLaborat.riosExames.WaProject.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.AtualizacaoExamesDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.ExamesDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.IdLabDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Exames;
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Laboratorio;
+
 
 public interface ExamesService {
 	

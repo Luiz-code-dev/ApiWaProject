@@ -33,6 +33,10 @@ public class Laboratorio {
 	@ManyToMany(mappedBy = "listaLaboratorios")
 	@JsonManagedReference
 	private List<Exames> listaExames;
+	
+	public Laboratorio() {
+		
+	}
 
 	public Long getIdLaboratorio() {
 		return idLaboratorio;
@@ -75,4 +79,8 @@ public class Laboratorio {
 		return "Laboratorio [idLaboratorio=" + idLaboratorio + ", nome=" + nome + ", endereco=" + endereco + ", status="
 				+ status + "]";
 	}
+
+	
+
+	
 }

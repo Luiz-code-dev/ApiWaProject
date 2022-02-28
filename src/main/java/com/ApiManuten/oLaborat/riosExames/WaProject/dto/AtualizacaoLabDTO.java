@@ -1,8 +1,14 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.dto;
 
+import java.io.Serializable;
+
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Status;
 
-public class AtualizacaoLabDTO {
+public class AtualizacaoLabDTO implements Serializable{
+
+
+	private static final long serialVersionUID = 1L;
+
 
 
 	private String nome;
