@@ -10,29 +10,12 @@ import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Laboratorio;
 
 public interface LaboratorioServices {
 	
-	public static Laboratorio cadastrarLaboratorios(LaboratorioDTO laboratorioDTO) {
-		
-		return null;
-	}
+	public Laboratorio cadastrarLaboratorios(LaboratorioDTO laboratorioDTO); 
 
-	public static List<Laboratorio> listarLaboratorio() {
-		
-		return null;
-	}
+	public  List<Laboratorio> listarLaboratorio();
+	public  Laboratorio getLaboratorio(Long idLaboratorio);
 
-	public static Laboratorio getLaboratorio(Long idLaboratorio) {
-		
-		return null;
-	}
-
-	public static Laboratorio atualizarLaboratorio(AtualizacaoLabDTO laboratorioDTO, Long idLaboratorio) {
-		
-		return null;
-	}
-
-	public static boolean deletarLaboratorio(Long idLaboratorio) {
-		
-		return false;
-	}
+	public Laboratorio atualizarLaboratorio(AtualizacaoLabDTO laboratorioDTO, Long idLaboratorio);
+	public  boolean deletarLaboratorio(Long idLaboratorio);
 
 }

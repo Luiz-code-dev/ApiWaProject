@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.AtualizacaoLabDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.LaboratorioDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Laboratorio;
+import com.ApiManuten.oLaborat.riosExames.WaProject.repositories.LaboratorioRepository;
 import com.ApiManuten.oLaborat.riosExames.WaProject.service.ExamesService;
 import com.ApiManuten.oLaborat.riosExames.WaProject.service.LaboratorioServices;
 
@@ -30,10 +32,27 @@ public class LaboratorioControllers {
 
 	@Autowired
 	private ExamesService exameService;
+	
+	@Autowired /* Injeção de Dependencia */
+	private LaboratorioRepository laboratorioRepository;
+	
+	
+	
+	@RequestMapping(value = "/cadastrar/{name}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public String greetingText(@PathVariable String name) {
+
+		Laboratorio laboratorio = new Laboratorio();
+		laboratorio.setNome(name);
+
+		laboratorioRepository.save(laboratorio);/* gravar no banco de dados */
+
+		return "Laboratorio cadastrado " + name + "!";
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Laboratorio> cadastrarLaboratorio(@Validated @RequestBody LaboratorioDTO laboratorioDTO) {
-		return new ResponseEntity<Laboratorio>(LaboratorioServices.cadastrarLaboratorios(laboratorioDTO),
+		return new ResponseEntity<Laboratorio>(laboratorioServico.cadastrarLaboratorios(laboratorioDTO),
 				HttpStatus.CREATED);
 	}
 
@@ -44,7 +63,7 @@ public class LaboratorioControllers {
 		if (!ObjectUtils.isEmpty(nomeExame)) {
 			lista = exameService.listarLaboratoriosAssociados(nomeExame);
 		} else {
-			lista = LaboratorioServices.listarLaboratorio();
+			lista = laboratorioServico.listarLaboratorio();
 		}
 		if (ObjectUtils.isEmpty(lista)) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -54,7 +73,7 @@ public class LaboratorioControllers {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public ResponseEntity<Laboratorio> buscarLaboratorio(@PathVariable(value = "id") Long id) {
-		Laboratorio lab = LaboratorioServices.getLaboratorio(id);
+		Laboratorio lab = laboratorioServico.getLaboratorio(id);
 		if (ObjectUtils.isEmpty(lab)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -64,7 +83,7 @@ public class LaboratorioControllers {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Laboratorio> atualizarLaboratorio(@PathVariable(value = "id") Long id,
 			@Validated @RequestBody AtualizacaoLabDTO laboratorioDTO) {
-		Laboratorio lab = LaboratorioServices.atualizarLaboratorio(laboratorioDTO, id);
+		Laboratorio lab = laboratorioServico.atualizarLaboratorio(laboratorioDTO, id);
 		if (ObjectUtils.isEmpty(lab)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -73,7 +92,7 @@ public class LaboratorioControllers {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> removerLaboratorio(@PathVariable(value = "id") Long id) {
-		if (!LaboratorioServices.deletarLaboratorio(id)) {
+		if (!laboratorioServico.deletarLaboratorio(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

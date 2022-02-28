@@ -26,7 +26,7 @@ public class ExamesServicesImpl {
 	private ExamesRepository ExamesRepositorio;
 
 	@Autowired
-	private LaboratorioServices laboratorioService;
+	private LaboratorioServices laboratorioServico;
 
 	@Autowired
 	private ConversionService conversionService;
@@ -82,7 +82,7 @@ public class ExamesServicesImpl {
 		}
 		Laboratorio lab;
 	
-			lab = LaboratorioServices.getLaboratorio(idLab.getIdLaboratorio());
+			lab = laboratorioServico.getLaboratorio(idLab.getIdLaboratorio());
 		if (ObjectUtils.isEmpty(lab)) {
 			throw new LaboratorioNotFoundException(idLab.getIdLaboratorio());
 		}
