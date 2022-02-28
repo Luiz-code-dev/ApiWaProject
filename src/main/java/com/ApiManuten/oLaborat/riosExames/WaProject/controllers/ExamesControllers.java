@@ -21,16 +21,16 @@ import com.ApiManuten.oLaborat.riosExames.WaProject.service.ExamesService;
 public class ExamesControllers {
 	
 	@Autowired
-	private ExamesService Exameservice;
+	private ExamesService exameService;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Exames> cadastrarExames(@Validated @RequestBody ExamesDTO ExamesDTO) {
-		return new ResponseEntity<Exames>(Exameservice.cadastrarExame(ExamesDTO), HttpStatus.CREATED);
+		return new ResponseEntity<Exames>(exameService.cadastrarExame(ExamesDTO), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Exames>> listarExames() {
-		List<Exames> lista = Exameservice.listarExames();
+		List<Exames> lista = exameService.listarExames();
 		if (ObjectUtils.isEmpty(lista)) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -40,7 +40,7 @@ public class ExamesControllers {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Exames> atualizarExames(@Validated @RequestBody AtualizacaoExamesDTO ExamesDTO,
 			@PathVariable(value = "id") Long id) {
-		Exames Exames = Exameservice.atualizarExames(id, ExamesDTO);
+		Exames Exames = exameService.atualizarExames(id, ExamesDTO);
 		if (ObjectUtils.isEmpty(Exames)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -49,7 +49,7 @@ public class ExamesControllers {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public ResponseEntity<Exames> buscarExames(@PathVariable(value = "id") Long idExames) {
-		Exames Exames = Exameservice.getExame(idExames);
+		Exames Exames = exameService.getExame(idExames);
 		if (ObjectUtils.isEmpty(Exames)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -58,7 +58,7 @@ public class ExamesControllers {
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
 	public ResponseEntity<Void> removerExames(@PathVariable(value = "id") Long idExames) {
-		if (Exameservice.removerExames(idExames)) {
+		if (exameService.removerExames(idExames)) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -67,14 +67,14 @@ public class ExamesControllers {
 	@RequestMapping(value = "/{id}/laboratorios", method = RequestMethod.POST)
 	public ResponseEntity<Exames> associarExamesComLaboratorio(@Validated @RequestBody IdLabDTO idLaboratorio,
 			@PathVariable(value = "id") Long idExames) {
-		Exames Exames = Exameservice.associarExamesComgLaboratorio(idExames, idLaboratorio);
+		Exames Exames = exameService.associarExamesComgLaboratorio(idExames, idLaboratorio);
 		return new ResponseEntity<Exames>(Exames, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}/laboratorios", method = RequestMethod.DELETE)
 	public ResponseEntity<Exames> desassociarExamesDeLaboratorio(@Validated @RequestBody IdLabDTO idLaboratorio,
 			@PathVariable(value = "id") Long idExames) {
-		Exames Exames = Exameservice.desassociarExamesDeLaboratorio(idExames, idLaboratorio);
+		Exames Exames = exameService.desassociarExamesDeLaboratorio(idExames, idLaboratorio);
 		if (ObjectUtils.isEmpty(Exames)) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
