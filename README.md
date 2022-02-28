@@ -10,7 +10,6 @@ O projeto foi criado com Spring Boot na linguagem de programação Java com BD P
 O projeto está divido nas seguintes camadas:<br>
 
 main:<br>
-
 Entidade<br>
 Repositório<br>
 Serviço<br>
@@ -62,7 +61,7 @@ DELETE /exames/{id}: Requisita a remoção lógica do exame informado pelo id na
 POST /laboratorios: Requisita o cadastro do laboratório que é enviado no corpo da requisição. Exemplo do corpo da requisição para Cadastro de Laboratório
 {
 	"nome": "Laboratório Sabin",
-	"endereco": "São José dos Campos"
+	"endereco": "Salvador"
 }
 
 
@@ -81,8 +80,8 @@ GET /laboratorios/{id}: Requisita os dados do id do laboratório informado na UR
 
 PUT /laboratorios/{id}: Requisita a atualização do id do laboratório informado na URL com os novos dados enviados no corpo da requisição. Exemplo do corpo da requisição para Atualizar o Laboratório
 {
-	"nome": "Laboratório GQS",
-	"endereco": "Santos",
+	"nome": "Laboratório CRV",
+	"endereco": "SanSalvador",
 	"status": "INATIVO"
 }
 
