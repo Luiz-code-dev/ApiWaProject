@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.AtualizacaoLabDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.LaboratorioDTO;
@@ -22,8 +22,8 @@ import com.ApiManuten.oLaborat.riosExames.WaProject.repositories.LaboratorioRepo
 import com.ApiManuten.oLaborat.riosExames.WaProject.service.ExamesService;
 import com.ApiManuten.oLaborat.riosExames.WaProject.service.LaboratorioServices;
 
-@Controller
-@RequestMapping(value = "/laboratorios")
+@RestController
+@RequestMapping("/laboratorios")
 public class LaboratorioControllers {
 
 

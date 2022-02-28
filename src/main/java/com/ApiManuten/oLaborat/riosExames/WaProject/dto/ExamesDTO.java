@@ -19,9 +19,10 @@ public class ExamesDTO implements Serializable{
 	
 	
 
-	public ExamesDTO(String nome) {
+	public ExamesDTO(String nome, TiposExames tipo) {
 		super();
 		this.nome = nome;
+		this.tipo = tipo;
 	}
 	
 
@@ -40,4 +41,12 @@ public class ExamesDTO implements Serializable{
 	public void setTipo(TiposExames tipo) {
 		this.tipo = tipo;
 	}
+
+
+	@Override
+	public String toString() {
+		return "ExamesDTO [nome=" + nome + ", tipo=" + tipo + "]";
+	}
+	
+	
 }

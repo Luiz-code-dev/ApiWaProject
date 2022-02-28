@@ -35,4 +35,11 @@ public class LaboratorioDTO implements Serializable{
 	public void setEndereço(String endereco) {
 		this.endereco = endereco;
 	}
+
+	@Override
+	public String toString() {
+		return "LaboratorioDTO [nome=" + nome + ", endereco=" + endereco + "]";
+	}
+	
+	
 }

@@ -50,4 +50,10 @@ public class AtualizacaoLabDTO implements Serializable{
 		this.endereco = endereco;
 	}
 
+	@Override
+	public String toString() {
+		return "AtualizacaoLabDTO [nome=" + nome + ", endereco=" + endereco + ", status=" + status + "]";
+	}
+
+	
 }

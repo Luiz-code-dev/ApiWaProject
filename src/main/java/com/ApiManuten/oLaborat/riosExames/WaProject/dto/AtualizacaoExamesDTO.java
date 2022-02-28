@@ -50,4 +50,11 @@ public class AtualizacaoExamesDTO implements Serializable{
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "AtualizacaoExamesDTO [nome=" + nome + ", tipo=" + tipo + ", status=" + status + "]";
+	}
+	
+	
 }

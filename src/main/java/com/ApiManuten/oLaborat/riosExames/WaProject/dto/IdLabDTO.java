@@ -18,4 +18,10 @@ public class IdLabDTO implements Serializable{
 		this.idLaboratorio = idLaboratorio;
 	}
 
+	@Override
+	public String toString() {
+		return "IdLabDTO [idLaboratorio=" + idLaboratorio + "]";
+	}
+
+	
 }
