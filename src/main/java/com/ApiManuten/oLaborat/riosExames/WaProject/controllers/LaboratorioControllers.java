@@ -18,7 +18,7 @@ import com.ApiManuten.oLaborat.riosExames.WaProject.dto.AtualizacaoLabDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.dto.LaboratorioDTO;
 import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Laboratorio;
 import com.ApiManuten.oLaborat.riosExames.WaProject.service.ExamesService;
-import com.ApiManuten.oLaborat.riosExames.WaProject.service.LaboratorioService;
+import com.ApiManuten.oLaborat.riosExames.WaProject.service.LaboratorioServices;
 
 @Controller
 @RequestMapping(value = "/laboratorios")
@@ -26,14 +26,14 @@ public class LaboratorioControllers {
 
 
 	@Autowired
-	private LaboratorioService laboratorioServico;
+	private LaboratorioServices laboratorioServico;
 
 	@Autowired
 	private ExamesService exameService;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Laboratorio> cadastrarLaboratorio(@Validated @RequestBody LaboratorioDTO laboratorioDTO) {
-		return new ResponseEntity<Laboratorio>(laboratorioServico.cadastrarLaboratorio(laboratorioDTO),
+		return new ResponseEntity<Laboratorio>(LaboratorioServices.cadastrarLaboratorios(laboratorioDTO),
 				HttpStatus.CREATED);
 	}
 
@@ -44,7 +44,7 @@ public class LaboratorioControllers {
 		if (!ObjectUtils.isEmpty(nomeExame)) {
 			lista = exameService.listarLaboratoriosAssociados(nomeExame);
 		} else {
-			lista = LaboratorioService.listarLaboratorio();
+			lista = LaboratorioServices.listarLaboratorio();
 		}
 		if (ObjectUtils.isEmpty(lista)) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -54,7 +54,7 @@ public class LaboratorioControllers {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public ResponseEntity<Laboratorio> buscarLaboratorio(@PathVariable(value = "id") Long id) {
-		Laboratorio lab = LaboratorioService.getLaboratorio(id);
+		Laboratorio lab = LaboratorioServices.getLaboratorio(id);
 		if (ObjectUtils.isEmpty(lab)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -64,7 +64,7 @@ public class LaboratorioControllers {
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Laboratorio> atualizarLaboratorio(@PathVariable(value = "id") Long id,
 			@Validated @RequestBody AtualizacaoLabDTO laboratorioDTO) {
-		Laboratorio lab = LaboratorioService.atualizarLaboratorio(laboratorioDTO, id);
+		Laboratorio lab = LaboratorioServices.atualizarLaboratorio(laboratorioDTO, id);
 		if (ObjectUtils.isEmpty(lab)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -73,7 +73,7 @@ public class LaboratorioControllers {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> removerLaboratorio(@PathVariable(value = "id") Long id) {
-		if (!LaboratorioService.deletarLaboratorio(id)) {
+		if (!LaboratorioServices.deletarLaboratorio(id)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

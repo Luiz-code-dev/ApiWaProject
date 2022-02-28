@@ -25,7 +25,7 @@ public class ExamesControllers {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Exames> cadastrarExames(@Validated @RequestBody ExamesDTO ExamesDTO) {
-		return new ResponseEntity<Exames>(Exameservice.cadastrarExames(ExamesDTO), HttpStatus.CREATED);
+		return new ResponseEntity<Exames>(Exameservice.cadastrarExame(ExamesDTO), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class ExamesControllers {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public ResponseEntity<Exames> buscarExames(@PathVariable(value = "id") Long idExames) {
-		Exames Exames = Exameservice.getExames(idExames);
+		Exames Exames = Exameservice.getExame(idExames);
 		if (ObjectUtils.isEmpty(Exames)) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -67,7 +67,7 @@ public class ExamesControllers {
 	@RequestMapping(value = "/{id}/laboratorios", method = RequestMethod.POST)
 	public ResponseEntity<Exames> associarExamesComLaboratorio(@Validated @RequestBody IdLabDTO idLaboratorio,
 			@PathVariable(value = "id") Long idExames) {
-		Exames Exames = Exameservice.associarExamesComLaboratorio(idExames, idLaboratorio);
+		Exames Exames = Exameservice.associarExamesComgLaboratorio(idExames, idLaboratorio);
 		return new ResponseEntity<Exames>(Exames, HttpStatus.OK);
 	}
 

@@ -1,19 +1,24 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.dto;
 
+import com.ApiManuten.oLaborat.riosExames.WaProject.entities.Status;
+import com.ApiManuten.oLaborat.riosExames.WaProject.entities.TiposExames;
+
 public class AtualizacaoExamesDTO {
 
 
 	private String nome;
 
-	private String endereco;
+	private TiposExames tipo;
 	
+	private Status status;
 	
 	
 
-	public AtualizacaoExamesDTO(String nome, String endereco) {
+	public AtualizacaoExamesDTO(String nome, TiposExames tipo, Status status) {
 		super();
 		this.nome = nome;
-		this.endereco = endereco;
+		this.tipo = tipo;
+		this.status = status;
 	}
 
 	public String getNome() {
@@ -24,11 +29,21 @@ public class AtualizacaoExamesDTO {
 		this.nome = nome;
 	}
 
-	public String getEndereco() {
-		return endereco;
+	
+	
+	public TiposExames getTipo() {
+		return tipo;
 	}
 
-	public void setEndereço(String endereco) {
-		this.endereco = endereco;
+	public void setTipo(TiposExames tipo) {
+		this.tipo = tipo;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }
