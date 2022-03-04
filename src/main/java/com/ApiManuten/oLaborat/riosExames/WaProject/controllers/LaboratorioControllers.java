@@ -23,7 +23,7 @@ import com.ApiManuten.oLaborat.riosExames.WaProject.service.ExamesService;
 import com.ApiManuten.oLaborat.riosExames.WaProject.service.LaboratorioServices;
 
 @RestController
-@RequestMapping("/laboratorios")
+@RequestMapping(value = "/laboratorios")
 public class LaboratorioControllers {
 
 
