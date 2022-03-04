@@ -1,6 +1,7 @@
 package com.ApiManuten.oLaborat.riosExames.WaProject.entities;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -78,6 +79,23 @@ public class Laboratorio {
 	public String toString() {
 		return "Laboratorio [idLaboratorio=" + idLaboratorio + ", nome=" + nome + ", endereco=" + endereco + ", status="
 				+ status + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idLaboratorio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Laboratorio other = (Laboratorio) obj;
+		return Objects.equals(idLaboratorio, other.idLaboratorio);
 	}
 
 	
